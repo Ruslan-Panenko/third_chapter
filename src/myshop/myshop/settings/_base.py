@@ -39,6 +39,8 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 
 	'myshop.apps.shop',
+	'myshop.apps.cart',
+	'myshop.apps.orders',
 ]
 
 MIDDLEWARE = [
@@ -75,12 +77,10 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-	'default': {
-		'ENGINE': 'django.db.backends.postgresql_psycopg2',
-		'NAME': DB_NAME,
-		'USER': DB_USER,
-		'PASSWORD': DB_PASSWORD,
-	}
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }
 }
 
 # Password validation
@@ -130,3 +130,6 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+CART_SESSION_ID = 'cart'
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
